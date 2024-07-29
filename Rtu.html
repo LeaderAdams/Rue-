@@ -1,0 +1,265 @@
+<html><head><base href="https://alvecapital.com" target="_blank">
+<meta charset="utf-8">
+<title>AL VE CAPITAL - Prédiction Crash MEGAPARI</title>
+<style>
+body {
+  font-family: 'Courier New', monospace;
+  background: #000;
+  color: #0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.header {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  text-shadow: 0 0 10px #0f0;
+  animation: glitch 1s linear infinite;
+  z-index: 2;
+}
+@keyframes glitch {
+  2%, 64% { transform: translate(2px,0) skew(0deg); }
+  4%, 60% { transform: translate(-2px,0) skew(0deg); }
+  62% { transform: translate(0,0) skew(5deg); }
+}
+.container {
+  background: rgba(0,30,0,0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,255,0,0.3);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 90%;
+}
+h1, h2 {
+  color: #0f0;
+  margin-bottom: 1rem;
+}
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #0f0;
+  border-radius: 5px;
+  background: #000;
+  color: #0f0;
+}
+button {
+  background: #0f0;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background: #000;
+  color: #0f0;
+  box-shadow: 0 0 10px #0f0;
+}
+#prediction {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0,255,0,.3);
+  border-radius: 50%;
+  border-top-color: #0f0;
+  animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.notice {
+  color: #ff0;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.explanation {
+  font-size: 0.9rem;
+  text-align: left;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #0f0;
+  border-radius: 5px;
+}
+.promo {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #ff0;
+  font-size: 1.2rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0;
+  }
+  to {
+    text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0;
+  }
+}
+.telegram-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: #0088cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(0, 136, 204, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 136, 204, 0);
+  }
+}
+.telegram-button:hover {
+  background: #005580;
+  animation: none;
+}
+.footer {
+  margin-top: 2rem;
+  color: #0f0;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0,30,0,0.8);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+.crash-emoji {
+  font-size: 2rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+</style>
+</head>
+<body>
+<div class="header">AL VE CAPITAL</div>
+<div class="container">
+  <h1>Prédiction Crash MEGAPARI <span class="crash-emoji">💥</span></h1>
+  <p class="notice">Note: Nos prédictions sont basées sur des analyses avancées, mais le jeu reste imprévisible. Jouez de manière responsable.</p>
+  <form id="predictionForm" method="GET" action="/predict">
+    <input type="text" id="megapariId" name="megapariId" placeholder="Votre ID de compte MEGAPARI" required>
+    <input type="url" id="gameLink" name="gameLink" placeholder="Collez le lien du jeu Crash ici" required>
+    <button type="submit">Obtenir la prédiction</button>
+  </form>
+  <div id="prediction"></div>
+  <div class="explanation">
+    <h2>Comment fonctionnent nos prédictions ?</h2>
+    <p>Notre système utilise des techniques avancées de scraping et d'analyse de données. L'ID de votre compte MEGAPARI nous permet d'optimiser le scraping du jeu, tandis que le lien du jeu nous donne accès à une collecte précise des données en temps réel. Grâce à ces informations, notre algorithme de machine learning analyse les patterns, la volatilité et d'autres facteurs cruciaux pour générer des prédictions aussi précises que possible dans ce contexte hautement aléatoire.</p>
+  </div>
+  <p class="promo">Code promo exclusif : <span class="code">ALVE10</span></p>
+  <a href="https://t.me/alvecapital1" class="telegram-button" target="_blank">Rejoignez notre canal Telegram</a>
+</div>
+
+<div class="footer">
+  Contact : <a href="mailto:verolalex8@gmail.com" style="color: #0f0;">verolalex8@gmail.com</a>
+</div>
+
+<canvas class="matrix-bg" id="matrix"></canvas>
+
+<script>
+document.getElementById('predictionForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const megapariId = document.getElementById('megapariId').value;
+  const gameLink = document.getElementById('gameLink').value;
+  const predictionEl = document.getElementById('prediction');
+  
+  if (!megapariId) {
+    predictionEl.innerHTML = '<span style="color: #f00;">Veuillez entrer votre ID de compte MEGAPARI</span>';
+    return;
+  }
+  
+  predictionEl.innerHTML = '<div class="loading"></div> Analyse en cours...';
+  
+  // Simulons une analyse et une prédiction
+  setTimeout(() => {
+    const randomMultiplier = (Math.random() * 2 + 1).toFixed(2);
+    predictionEl.innerHTML = `Prédiction pour la prochaine partie : <span style="color: #ff0;">${randomMultiplier}x</span>`;
+  }, 3000);
+});
+
+// Animation Matrix
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const nums = '0123456789';
+
+const alphabet = katakana + latin + nums;
+
+const fontSize = 16;
+const columns = canvas.width/fontSize;
+
+const rainDrops = [];
+
+for( let x = 0; x < columns; x++ ) {
+	rainDrops[x] = 1;
+}
+
+const draw = () => {
+	ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	
+	ctx.fillStyle = '#0f0';
+	ctx.font = fontSize + 'px monospace';
+
+	for(let i = 0; i < rainDrops.length; i++)
+	{
+		const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+		ctx.fillText(text, i*fontSize, rainDrops[i]*fontSize);
+		
+		if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975){
+			rainDrops[i] = 0;
+        }
+		rainDrops[i]++;
+	}
+};
+
+setInterval(draw, 30);
+
+window.addEventListener('resize', function() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+</body></html>
